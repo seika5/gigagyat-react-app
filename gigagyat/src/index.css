@@ -13,6 +13,6 @@ code {
 }
 
 video {
-    max-height: 600px;
+    max-height: 80vh;
     aspect-ratio: initial;
 }

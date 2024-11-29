@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from '../firebase';
 
-const SERVER_URL = "http://127.0.0.1:5000"
+const SERVER_URL = "http://127.0.0.1:5000";
 
 const Reel = () => {
     const [reel, setReel] = useState({});
@@ -13,10 +13,8 @@ const Reel = () => {
         const url = `${SERVER_URL}/api/data?url=${reel_id}`;
         try {
             const response = await fetch(url);
-    
             const rJson = await response.json();
             const target = rJson["url"];
-    
             const existingVideo = document.querySelector("video");
             existingVideo.src = target;
         } catch (error) {
@@ -43,10 +41,10 @@ const Reel = () => {
 
     useEffect(() => {
         if (!reel.song) {
-            return
+            return;
         }
         if (reel.song.length < 40) {
-            return
+            return;
         }
         const reel_id = reel.song.substring(31, 42);
         updateVideoScreen(reel_id);
@@ -55,12 +53,24 @@ const Reel = () => {
     const changeRoom = (e) => {
         setRoom(e.target.value);
     };
+
     return (
         <section>
-            <div>
-                <input type="text" placeholder="Room ID" onChange={changeRoom} />
+            <div className="input-container">
+                <input 
+                    type="text" 
+                    placeholder="Enter Room ID" 
+                    onChange={changeRoom} 
+                    className="room-input"
+                />
             </div>
-            <video src="" playsInline autoPlay loop className="video"></video>
+            <video 
+                src="" 
+                playsInline 
+                autoPlay 
+                loop 
+                className={`video ${reel.song ? 'has-border' : ''}`}
+            ></video>
         </section>
     );
 };
