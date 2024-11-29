@@ -1,5 +1,5 @@
 import './App.css';
-import Reel from "./Components/reel.js";
+import Reel from "./Components/reel.jsx";
 
 function App() {
     document.title = "Jamster";

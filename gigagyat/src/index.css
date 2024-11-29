@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+video {
+    max-height: 600px;
+    aspect-ratio: initial;
+}
