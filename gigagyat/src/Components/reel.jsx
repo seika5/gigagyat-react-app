@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from '../firebase';
 
-const SERVER_URL = "http://127.0.0.1:5000";
+const SERVER_URL = "http://74.179.81.73:5000";
 
 const Reel = () => {
     const [reel, setReel] = useState({});
