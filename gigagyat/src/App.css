@@ -25,6 +25,15 @@
     padding: 16px; /* Space around the header */
 }
 
+.top-left-logo {
+    position: absolute;
+    top: 10px; /* Adjust spacing from the top */
+    left: 10px; /* Adjust spacing from the left */
+    width: 50px; /* Set the desired width */
+    height: 50px; /* Set the desired height */
+    z-index: 1000; /* Ensure it's above the canvas */
+}
+
 .button-group {
     display: flex;
     gap: 16px; /* Space between buttons */

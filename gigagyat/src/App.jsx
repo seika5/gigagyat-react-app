@@ -67,6 +67,11 @@ function App() {
                     </button>
                 </div>
             </header>
+            <img 
+                src="gra.jpg" 
+                alt="Logo" 
+                className="top-left-logo"
+            />
             <main className="main">
                 <Reel />
             </main>
