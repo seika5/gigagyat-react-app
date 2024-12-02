@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from '../firebase';
 
-const SERVER_URL = "https://74.179.81.73:5000";
+const SERVER_URL = "http://74.179.81.73";
 
 const Reel = () => {
     const [reel, setReel] = useState({});
@@ -11,8 +11,10 @@ const Reel = () => {
 
     const updateVideoScreen = async (reel_id) => {
         const url = `${SERVER_URL}/api/data?url=${reel_id}`;
+        console.log(url)
+
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
             const rJson = await response.json();
             const target = rJson["url"];
             const existingVideo = document.querySelector("video");
