@@ -11,33 +11,34 @@ function App() {
         canvas.width = width;
         canvas.height = height;
 
-        const dots = Array.from({ length: 100 }, () => ({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            radius: Math.random() * 2 + 1,
-            speedX: (Math.random() - 0.5) * 0.5,
-            speedY: (Math.random() - 0.5) * 0.5,
-        }));
+        const image = new Image();
+        image.src = "bunn.png";  // Replace this with the actual path to your image file
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            dots.forEach((dot) => {
-                dot.x += dot.speedX;
-                dot.y += dot.speedY;
+        // Wait for the image to load before starting the animation
+        image.onload = () => {
+            const images = Array.from({ length: 100 }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                speedX: (Math.random() - 0.5) * 0.5,
+                speedY: (Math.random() - 0.5) * 0.5,
+            }));
 
-                if (dot.x < 0 || dot.x > width) dot.speedX *= -1;
-                if (dot.y < 0 || dot.y > height) dot.speedY *= -1;
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                images.forEach((img) => {
+                    img.x += img.speedX;
+                    img.y += img.speedY;
 
-                ctx.beginPath();
-                ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
-                ctx.fillStyle = "white";
-                ctx.fill();
-                ctx.closePath();
-            });
-            requestAnimationFrame(animate);
-        }
+                    if (img.x < 0 || img.x > width) img.speedX *= -1;
+                    if (img.y < 0 || img.y > height) img.speedY *= -1;
 
-        animate();
+                    ctx.drawImage(image, img.x, img.y, 50, 50); // Adjust size of the image (50x50) as needed
+                });
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        };
 
         window.addEventListener("resize", () => {
             width = window.innerWidth;
