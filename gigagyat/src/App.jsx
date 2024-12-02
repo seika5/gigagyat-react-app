@@ -65,12 +65,6 @@ function App() {
                     >
                         Browser Extension
                     </button>
-                    <button
-                        className="custom-button"
-                        onClick={() => window.open("https://github.com/Teddygat0r/gigagyat", "_blank")}
-                    >
-                        API
-                    </button>
                 </div>
             </header>
             <main className="main">
